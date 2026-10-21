@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seyv – Bütçe Asistanın</title>
+  <meta name="description" content="Seyv ile harcamalarını saniyeler içinde kaydet, aylık bütçeni ve kategori limitlerini takip et. Ücretsiz, reklamsız, banka bağlantısı gerektirmez. Android için.">
+  <meta name="theme-color" content="#0E1418" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F7FAF8" media="(prefers-color-scheme: light)">
+
+  <!-- Yayın adresi belli olunca (seyv.app) canonical, og:url ve og:image adreslerini güncelle. -->
+  <link rel="canonical" href="https://fiaxus.github.io/seyv-web/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="Seyv">
+  <meta property="og:title" content="Seyv – Bütçe Asistanın">
+  <meta property="og:description" content="Harcamalarını kaydet, bütçeni kontrol et. Sade, reklamsız harcama ve bütçe takibi.">
+  <meta property="og:url" content="https://fiaxus.github.io/seyv-web/">
+  <meta property="og:image" content="https://fiaxus.github.io/seyv-web/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.classList.add('js'); setTimeout(function () { if (!window.__seyvReveal) document.documentElement.classList.remove('js'); }, 3000); }</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Seyv",
+    "operatingSystem": "Android",
+    "applicationCategory": "FinanceApplication",
+    "inLanguage": "tr",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
+    "author": { "@type": "Organization", "name": "Fiaxus Studio", "email": "fiaxusstudio@gmail.com" }
+  }
+  </script>
+</head>
+<body>
+
+<!-- İkon kütüphanesi (bir kez tanımlanır, <use> ile kullanılır) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-mint" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#7DF2D6"/><stop offset="1" stop-color="#2FC9A6"/></linearGradient>
+  </defs>
+  <symbol id="i-logo" viewBox="170 82 720 944"><path d="M 412 218 C 300 226 178 285 174 400 C 170 515 290 565 450 597 C 560 620 625 638 660 670 C 722 722 730 830 632 905 L 632 1022 L 645 1022 C 738 1022 864 948 885 760 C 886 610 800 530 650 478 C 570 455 500 440 448 420 C 380 395 358 350 370 300 C 377 262 395 236 412 218 Z M 418 342 C 424 222 540 124 700 110 C 780 103 845 98 884 86 C 870 200 812 300 690 330 C 610 348 520 344 418 342 Z M 515 1022 L 515 742 L 632 686 L 632 1022 Z M 352 1022 L 352 822 L 468 768 L 468 1022 Z M 174 912 L 305 848 L 305 1022 L 268 1022 C 225 1004 190 962 174 912 Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 004 0"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11L21 7H6"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 9l3-5 4 2 4-3 4 2 3 4"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16M8 21l1-4M16 21l-1-4"/></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3v7a2 2 0 004 0V3M8 10v11M17 3c-2 2-2 6 0 8v10"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1 14H6L5 7z"/><path d="M9 7a3 3 0 016 0"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 01-.5-10A6 6 0 0118 9a4.5 4.5 0 01-.5 9z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+</svg>
+
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<div class="top-bg" aria-hidden="true">
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+</div>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#" aria-label="Seyv ana sayfa">
+        <svg width="30" height="40" aria-hidden="true"><use href="#i-logo" fill="url(#g-mint)"/></svg>
+        <span>Seyv</span>
+      </a>
+      <nav class="nav" aria-label="Ana menü">
+        <a href="#ozellikler">Özellikler</a>
+        <a href="#ekranlar">Ekranlar</a>
+        <a href="#gizlilik">Gizlilik</a>
+        <a href="#sss">SSS</a>
+        <a class="btn btn-primary" href="https://play.google.com/apps/testing/com.seyv.app" data-store-link>Uygulamayı indir</a>
+      </nav>
+    </div>
+  </header>
+
+<main id="icerik">
+  <section class="container hero">
+    <div class="hero-copy">
+      <p class="badge"><b>YENİ</b>Android için · Ücretsiz · Reklamsız</p>
+      <h1>Paran nereye gidiyor, <span>artık biliyorsun.</span></h1>
+      <p class="hero-sub">Harcamalarını saniyeler içinde kaydet, bütçeni ve kategori limitlerini takip et. Banka hesabına bağlanmaz, reklam göstermez.</p>
+      <div class="hero-cta">
+        <a class="store-btn" href="https://play.google.com/apps/testing/com.seyv.app" data-store-link>
+          <svg width="26" height="26" aria-hidden="true"><use href="#i-download"/></svg>
+          <span><small>ŞİMDİ EDİNİN</small><strong>Google Play</strong></span>
+        </a>
+        <a class="btn btn-ghost" href="#ozellikler">Neler yapabilir?<svg width="18" height="18" aria-hidden="true"><use href="#i-down"/></svg></a>
+      </div>
+      <ul class="checks">
+        <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg>Reklam yok</li>
+        <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg>Banka bağlantısı yok</li>
+        <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg>Verin satılmaz</li>
+      </ul>
+    </div>
+
+    <!-- Telefon: uygulamanın ana ekranı (örnek verilerle) -->
+    <div class="stage" role="img" aria-label="Seyv ana ekranı: aylık toplam harcama, kalan bütçe, kategori özeti ve son harcamalar">
+      <div class="stage-glow" aria-hidden="true"></div>
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="cam"></div>
+          <div class="scr">
+            <div class="app-top">
+              <div class="avatar">K</div>
+              <div class="who"><small>İyi günler</small><b>Kaan</b></div>
+              <div class="icon-btn"><svg width="16" height="16"><use href="#i-bell"/></svg></div>
+            </div>
+            <div class="total-card">
+              <div class="row"><span>Ekim 2026 · Toplam harcama</span><span class="tag">TRY</span></div>
+              <div class="big">₺6.420,50</div>
+              <div class="trend"><svg width="12" height="12" style="color:#4FE3C1"><use href="#i-trend"/></svg>Geçen aya göre %9 daha az</div>
+              <div class="row meta"><span>Aylık bütçe ₺15.000,00</span><b>Kalan ₺8.579,50</b></div>
+              <div class="bar"><i style="width:43%"></i></div>
+            </div>
+            <div class="sec-title-row"><span class="sec-title">Kategori özeti</span><span class="link">Sırala</span></div>
+            <div class="cats">
+              <div class="cat"><div class="ic k-market"><svg width="14" height="14"><use href="#i-cart"/></svg></div><small>Market</small><b>₺2.150,00</b><div class="thin"><i style="width:72%;background:var(--c-market)"></i></div></div>
+              <div class="cat"><div class="ic k-eglence"><svg width="14" height="14"><use href="#i-film"/></svg></div><small>Eğlence</small><b>₺850,00</b><div class="thin"><i style="width:85%;background:var(--c-eglence)"></i></div></div>
+              <div class="cat"><div class="ic k-ulasim"><svg width="14" height="14"><use href="#i-bus"/></svg></div><small>Ulaşım</small><b>₺640,00</b><div class="thin"><i style="width:40%;background:var(--c-ulasim)"></i></div></div>
+            </div>
+            <div class="sec-title">Son harcamalar</div>
+            <ul class="tx">
+              <li><div class="ic k-market"><svg width="14" height="14"><use href="#i-cart"/></svg></div><div class="d"><b>Market</b><small>Haftalık alışveriş</small></div><div class="amt">-₺1.240,50</div></li>
+              <li><div class="ic k-yemek"><svg width="14" height="14"><use href="#i-food"/></svg></div><div class="d"><b>Yemek</b><small>Öğle yemeği</small></div><div class="amt">-₺320,00</div></li>
+              <li><div class="ic k-alisveris"><svg width="14" height="14"><use href="#i-bag"/></svg></div><div class="d"><b>Alışveriş</b><small>Kitap</small></div><div class="amt">-₺2.377,30<small>48,00 USD</small></div></li>
+            </ul>
+          </div>
+          <div class="tabbar">
+            <span class="on">Anasayfa</span><span>Harcama</span>
+            <span class="fab"><svg width="18" height="18" style="color:#0E3B33"><use href="#i-plus"/></svg></span>
+            <span>İstatistik</span><span>Profil</span>
+          </div>
+        </div>
+      </div>
+      <div class="float-pill" aria-hidden="true">₺8.579,50 kaldı</div>
+      <div class="float-note" aria-hidden="true">
+        <div class="ic k-market" style="position:relative;width:34px;height:34px"><svg width="16" height="16"><use href="#i-cart"/></svg><span class="dot" style="background:#F0AE4C"></span></div>
+        <div><b>Market bütçesinin %80'ine ulaştın</b><span class="t">Bu ay ₺2.400 harcadın; limitin ₺3.000.</span></div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== Özellikler ===== -->
+<section id="ozellikler" class="container features">
+  <div class="section-head" data-reveal>
+    <p class="eyebrow">ÖZELLİKLER</p>
+    <h2 class="h2">İhtiyacın olan her şey. <span class="hl">Fazlası değil.</span></h2>
+    <p class="lead">Karmaşık tablolar yok. Harcamanı gir, gerisini Seyv toparlasın.</p>
+  </div>
+
+  <div class="bento" data-stagger="80">
+    <article class="card wide" data-reveal>
+      <div>
+        <h3>Saniyeler içinde harcama ekle</h3>
+        <p>Tutarı yaz, kategoriyi seç, kaydet. 9 hazır kategori, açıklama ve tarih; istediğin zaman düzenle ya da sil.</p>
+      </div>
+      <div class="demo panel" aria-hidden="true">
+        <div class="amount-label">Tutar</div>
+        <div class="amount">500</div>
+        <div class="seg"><span class="on">TRY</span><span>USD</span><span>EUR</span></div>
+        <div class="cat-row">
+          <div><div class="ic k-yemek sel"><svg width="16" height="16"><use href="#i-food"/></svg></div>Yemek</div>
+          <div><div class="ic k-market"><svg width="16" height="16"><use href="#i-cart"/></svg></div>Market</div>
+          <div><div class="ic k-ulasim"><svg width="16" height="16"><use href="#i-bus"/></svg></div>Ulaşım</div>
+          <div><div class="ic k-fatura"><svg width="16" height="16"><use href="#i-receipt"/></svg></div>Fatura</div>
+          <div><div class="ic k-alisveris"><svg width="16" height="16"><use href="#i-bag"/></svg></div>Alışveriş</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-reveal>
+      <h3>Dövizli harcamalar otomatik TL'ye</h3>
+      <p>Dolar veya euro ile ekle, güncel kurla çevrilsin. Kurları ve günlük değişimi takip et.</p>
+      <ul class="list" aria-hidden="true">
+        <li class="li"><span class="code">USD</span><span class="name">Amerikan Doları</span><span class="val">₺49,53<small>▲ %0,22</small></span></li>
+        <li class="li"><span class="code">EUR</span><span class="name">Euro</span><span class="val">₺55,73<small>▲ %0,62</small></span></li>
+      </ul>
+    </article>
+
+    <article class="card" data-reveal>
+      <h3>Bütçeni kontrol altında tut</h3>
+      <p>Aylık bütçeni ve her kategori için limitini belirle.</p>
+      <div aria-hidden="true">
+        <div class="budget-card">
+          <div class="lbl">AYLIK TOPLAM BÜTÇE</div>
+          <div class="big">15.000 ₺</div>
+          <div class="bar"><i style="width:77%"></i></div>
+          <div class="row"><span>Dağıtılan 11.500 ₺</span><span>Boşta 3.500 ₺</span></div>
+        </div>
+        <div class="li"><span class="sq k-yemek"><svg width="15" height="15"><use href="#i-food"/></svg></span><span class="name">Yemek<small>Bütçenin %13'ü</small></span><span class="val">2.000 ₺</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-reveal>
+      <h3>Paranın nereye gittiğini anla</h3>
+      <p>Kategori dağılımı, son 6 ayın karşılaştırması ve günlük ortalama.</p>
+      <div class="donut-wrap" aria-hidden="true">
+        <svg class="donut" width="104" height="104" viewBox="0 0 42 42">
+          <circle cx="21" cy="21" r="15.9" fill="none" style="stroke: var(--c-alisveris)" stroke-width="5" stroke-dasharray="38 62"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" style="stroke: var(--c-market)" stroke-width="5" stroke-dasharray="24 76" stroke-dashoffset="-38"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" style="stroke: var(--c-eglence)" stroke-width="5" stroke-dasharray="16 84" stroke-dashoffset="-62"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" style="stroke: var(--c-saglik)" stroke-width="5" stroke-dasharray="14 86" stroke-dashoffset="-78"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" style="stroke: var(--c-yemek)" stroke-width="5" stroke-dasharray="8 92" stroke-dashoffset="-92"/>
+        </svg>
+        <ul class="legend">
+          <li><i style="background:var(--c-alisveris)"></i><span>Alışveriş</span><em>%38</em></li>
+          <li><i style="background:var(--c-market)"></i><span>Market</span><em>%24</em></li>
+          <li><i style="background:var(--c-eglence)"></i><span>Eğlence</span><em>%16</em></li>
+          <li><i style="background:var(--c-saglik)"></i><span>Sağlık</span><em>%14</em></li>
+          <li><i style="background:var(--c-yemek)"></i><span>Yemek</span><em>%8</em></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card wide" data-reveal>
+      <div>
+        <h3>Sınıra yaklaşınca haber al</h3>
+        <p>Bir kategoride limitinin %80'ine ulaştığında ve aştığında bildirim gelir. İstersen harcama girme hatırlatıcısı da var.</p>
+      </div>
+      <div class="demo notes" aria-hidden="true">
+        <div class="note"><div class="ic k-eglence"><svg width="15" height="15"><use href="#i-film"/></svg><span class="dot" style="background:#F2745F"></span></div><div><b>Eğlence bütçesinin tamamını kullandın</b><small>17 Ekim, 17:50</small></div></div>
+        <div class="note"><div class="ic k-market"><svg width="15" height="15"><use href="#i-cart"/></svg><span class="dot" style="background:#F0AE4C"></span></div><div><b>Market bütçesinin %80'ine ulaştın</b><small>17 Ekim, 17:50</small></div></div>
+      </div>
+    </article>
+
+    <div class="extras" data-stagger="80">
+      <div class="extra" data-reveal><svg width="24" height="24" aria-hidden="true"><use href="#i-moon"/></svg><span><b>Açık ve koyu tema</b><small>Ya da telefonuna uysun</small></span></div>
+      <div class="extra" data-reveal><svg width="24" height="24" aria-hidden="true"><use href="#i-user"/></svg><span><b>Google ile giriş</b><small>Ya da e-posta ile</small></span></div>
+      <div class="extra" data-reveal><svg width="24" height="24" aria-hidden="true"><use href="#i-cloud"/></svg><span><b>Verilerin hesabında</b><small>Telefon değişse de kaybolmaz</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Ekranlar ===== -->
+<section id="ekranlar" class="screens">
+  <div class="container screens-head" data-reveal>
+    <div>
+      <p class="eyebrow">EKRANLAR</p>
+      <h2 class="h2">Uygulamaya yakından bak</h2>
+    </div>
+    <p class="lead scroll-hint">Kaydırarak göz at →</p>
+  </div>
+  <div class="gallery" tabindex="0" aria-label="Uygulama ekran görüntüleri">
+    <ul data-stagger="60">
+      <li data-reveal><img src="img/seyv-1.webp" width="250" height="444" loading="lazy" alt="Ana ekran: aylık toplam harcama, kalan bütçe ve kategori özeti"></li>
+      <li data-reveal><img src="img/seyv-2.webp" width="250" height="444" loading="lazy" alt="Harcama ekleme: tutar, TRY USD EUR seçimi ve kategoriler"></li>
+      <li data-reveal><img src="img/seyv-3.webp" width="250" height="444" loading="lazy" alt="Bütçe planı: aylık toplam bütçe ve kategori limitleri"></li>
+      <li data-reveal><img src="img/seyv-4.webp" width="250" height="444" loading="lazy" alt="İstatistikler: kategori dağılımı ve son 6 ay grafiği"></li>
+      <li data-reveal><img src="img/seyv-5.webp" width="250" height="444" loading="lazy" alt="Döviz kurları: hızlı çevirici ve günlük değişimler"></li>
+      <li data-reveal><img src="img/seyv-6.webp" width="250" height="444" loading="lazy" alt="Bildirimler: bütçe limiti uyarıları"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Gizlilik ===== -->
+<section id="gizlilik" class="container privacy">
+  <div class="privacy-box" data-reveal>
+    <svg class="mark" width="360" height="470" aria-hidden="true"><use href="#i-logo" fill="currentColor"/></svg>
+    <div>
+      <p class="eyebrow">GİZLİLİK</p>
+      <h2 class="h2">Paran senin. <span class="hl">Verin de.</span></h2>
+      <p>Seyv'de reklam yok. Verilerin satılmaz, reklam amacıyla kullanılmaz. Hesabını ve tüm verilerini istediğin an silebilirsin.</p>
+      <a href="https://fiaxus.github.io/seyv-legal/privacy.html">Gizlilik politikasını oku<svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ul>
+      <li><svg width="24" height="24" aria-hidden="true"><use href="#i-lock"/></svg><span><b>Banka şifren istenmez</b><span>Seyv banka hesabına bağlanmaz; harcamalarını sen girersin.</span></span></li>
+      <li><svg width="24" height="24" aria-hidden="true"><use href="#i-shield"/></svg><span><b>Sadece sen görürsün</b><span>Her hesap yalnızca kendi verisine erişir; veriler Avrupa'daki sunucularda saklanır.</span></span></li>
+      <li><svg width="24" height="24" aria-hidden="true"><use href="#i-trash"/></svg><span><b>Tek adımda silme</b><span>Profil → Hesabı Sil: hesabın ve tüm harcamaların hemen silinir.</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== SSS ===== -->
+<section id="sss" class="container faq">
+  <div class="section-head" data-reveal>
+    <p class="eyebrow">SSS</p>
+    <h2 class="h2">Aklına takılanlar</h2>
+  </div>
+  <div class="faq-list" data-reveal>
+    <details>
+      <summary>Seyv ücretsiz mi?<span class="plus" aria-hidden="true">+</span></summary>
+      <p>Evet. Seyv'i indirmek ve kullanmak ücretsiz; uygulamada reklam da yok.</p>
+    </details>
+    <details>
+      <summary>Banka hesabıma bağlanıyor mu?<span class="plus" aria-hidden="true">+</span></summary>
+      <p>Hayır. Seyv hiçbir banka hesabına bağlanmaz ve banka bilgisi istemez. Harcamalarını kendin girersin.</p>
+    </details>
+    <details>
+      <summary>Telefonumu değiştirirsem verilerim kaybolur mu?<span class="plus" aria-hidden="true">+</span></summary>
+      <p>Hayır. Verilerin hesabına bağlı saklanır; yeni telefonda aynı hesapla giriş yapman yeterli.</p>
+    </details>
+    <details>
+      <summary>iPhone'da var mı?<span class="plus" aria-hidden="true">+</span></summary>
+      <p>Şimdilik sadece Android'de. iOS sürümü ileriki planlarımızda.</p>
+    </details>
+    <details>
+      <summary>Hesabımı nasıl silerim?<span class="plus" aria-hidden="true">+</span></summary>
+      <p>Uygulamada Profil → Hesabı Sil adımıyla. Uygulamaya erişemiyorsan <a href="https://fiaxus.github.io/seyv-legal/delete-account.html">hesap silme sayfasındaki</a> adımları izleyebilirsin.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== Son çağrı ===== -->
+<section class="container final">
+  <div class="final-box" data-reveal>
+    <div class="ring" aria-hidden="true"></div>
+    <div class="app-icon" aria-hidden="true"><svg width="40" height="52"><use href="#i-logo" fill="url(#g-mint)"/></svg></div>
+    <h2>Bu ay farkı gör.</h2>
+    <p>Bütçeni belirle, ilk harcamanı ekle. İki dakikanı alır.</p>
+    <a class="store-btn" href="https://play.google.com/apps/testing/com.seyv.app" data-store-link>
+      <svg width="26" height="26" aria-hidden="true"><use href="#i-download"/></svg>
+      <span><small>ŞİMDİ EDİNİN</small><strong>Google Play</strong></span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <a class="brand" href="#" aria-label="Seyv ana sayfa">
+        <svg width="22" height="29" aria-hidden="true"><use href="#i-logo" fill="url(#g-mint)"/></svg>
+        <span>Seyv</span>
+      </a>
+      <p class="copy">© 2026 Fiaxus Studio</p>
+    </div>
+    <nav class="foot-nav" aria-label="Alt menü">
+      <a href="https://fiaxus.github.io/seyv-legal/privacy.html">Gizlilik Politikası</a>
+      <a href="https://fiaxus.github.io/seyv-legal/terms.html">Kullanım Koşulları</a>
+      <a href="https://fiaxus.github.io/seyv-legal/delete-account.html">Hesap Silme</a>
+      <a href="mailto:fiaxusstudio@gmail.com">İletişim</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/reveal.js" defer></script>
+</body>
+</html>
