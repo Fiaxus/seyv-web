@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seyv Hesap ve Veri Silme</title>
+<style>
+  :root { --bg:#F7FAF8; --card:#FFFFFF; --fg:#10312D; --muted:#5E7A74; --primary:#08A88A; --line:#E2E8E6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#12181E; --card:#1B232B; --fg:#EEF6F4; --muted:#A3B8B2; --primary:#4FE3C1; --line:rgba(255,255,255,.09); }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:28px 24px; }
+  h1 { font-size:1.75rem; line-height:1.25; margin:0 0 4px; }
+  h2 { font-size:1.15rem; margin:32px 0 8px; }
+  ul, ol { padding-left:1.4rem; }
+  li { margin:6px 0; }
+  .meta { color:var(--muted); font-size:.9rem; margin:0 0 20px; }
+  a { color:var(--primary); }
+  .back { display:inline-block; margin-bottom:16px; text-decoration:none; font-size:.95rem; }
+  .note { border-left:3px solid var(--primary); padding:4px 0 4px 14px; color:var(--muted); }
+  footer { color:var(--muted); font-size:.85rem; text-align:center; margin-top:24px; }
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./">← Seyv yasal metinler</a>
+<div class="card">
+<h1>Hesap ve Veri Silme</h1>
+<p class="meta">Seyv · Fiaxus Studio · Son güncelleme: 23 Kasım 2026</p>
+
+<p>Seyv hesabınızı ve hesabınıza bağlı tüm verileri dilediğiniz zaman silebilirsiniz. Bu işlemi aşağıdaki iki yoldan biriyle gerçekleştirebilirsiniz.</p>
+
+<h2>1. Uygulama üzerinden (önerilen)</h2>
+<ol>
+  <li>Seyv'i açın ve hesabınıza giriş yapın.</li>
+  <li>Alt menüden <strong>Profil</strong> sekmesine geçin.</li>
+  <li>Sayfanın en altında yer alan <strong>Hesabı Sil</strong> düğmesine dokunun.</li>
+  <li>Silme işlemini onaylayın ve güvenliğiniz için kimliğinizi doğrulayın:
+    <ul>
+      <li>E-posta ile kayıt olduysanız şifrenizi yeniden girin.</li>
+      <li>Google ile giriş yaptıysanız açılan pencerede Seyv'e bağlı Google hesabınızı seçin.</li>
+    </ul>
+  </li>
+</ol>
+<p>İşlem tamamlandığında hesabınız ve tüm verileriniz derhal silinir ve oturumunuz kapatılır.</p>
+
+<h2>2. E-posta yoluyla</h2>
+<p>Uygulamaya erişiminizin bulunmaması halinde (örneğin uygulamayı cihazınızdan kaldırdıysanız veya şifrenizi hatırlamıyorsanız) silme talebinizi e-posta yoluyla iletebilirsiniz:</p>
+<ol>
+  <li><a href="mailto:fiaxusstudio@gmail.com?subject=Seyv%20hesap%20silme%20talebi">fiaxusstudio@gmail.com</a> adresine, <strong>Seyv hesabınızı oluşturduğunuz e-posta adresinden</strong> (Google ile giriş yaptıysanız ilgili Google hesabının e-posta adresinden) bir e-posta gönderin.</li>
+  <li>Konu satırına "Seyv hesap silme talebi" yazın.</li>
+  <li>Hesabın size ait olduğunun doğrulanması amacıyla, gerektiğinde sizinle iletişime geçilebilir.</li>
+</ol>
+<p>Talebiniz en geç 30 gün içinde işleme alınır ve işlem tamamlandığında tarafınıza e-posta ile bilgi verilir.</p>
+<p class="note">E-posta ile kayıt olduysanız ve şifrenizi unuttuysanız, uygulamanın giriş ekranındaki "Şifremi unuttum" seçeneğiyle şifrenizi sıfırlayarak hesabınızı uygulama üzerinden de silebilirsiniz.</p>
+
+<h2>Silinen veriler</h2>
+<ul>
+  <li>Hesabınız ve giriş bilgileriniz (e-posta adresiniz, varsa şifreniz ve Google hesabınızla olan bağlantı).</li>
+  <li>Adınız.</li>
+  <li>Tüm harcama kayıtlarınız (tutar, para birimi, kur, kategori, açıklama, tarih).</li>
+  <li>Aylık bütçeniz, bütçe dönemi başlangıç gününüz ve kategori bütçe limitleriniz.</li>
+  <li>Düzenli ödemeleriniz ve taksitleriniz.</li>
+</ul>
+
+<h2>Silinmeyen veya belirli bir süre saklanan veriler</h2>
+<ul>
+  <li><strong>Google hesabınız:</strong> Seyv hesabınızın silinmesi Google hesabınızı silmez; yalnızca Google hesabınız ile Seyv arasındaki bağlantı kaldırılır.</li>
+  <li><strong>Çökme ve hata raporları:</strong> Firebase Crashlytics'e gönderilmiş hata raporları yalnızca rastgele bir kullanıcı kimliği içerir; e-posta adresiniz, adınız veya harcamalarınız bu raporlarda yer almaz. Bu raporlar Google tarafından sınırlı bir süre (genellikle 90 gün) saklandıktan sonra otomatik olarak silinir.</li>
+  <li><strong>Cihazınızdaki veriler:</strong> Bildirim ayarlarınız, bildirim geçmişiniz, sabitlediğiniz kategoriler ve tema tercihiniz yalnızca cihazınızda tutulur. Hesabınızın silinmesiyle birlikte bildirim verileriniz ve sabitlediğiniz kategoriler cihazınızdan da silinir; diğer veriler uygulamayı cihazınızdan kaldırdığınızda silinir.</li>
+  <li><strong>Yasal yükümlülükler:</strong> Yasal bir yükümlülük gerektirmedikçe silinen veriler saklanmaz.</li>
+</ul>
+
+<p>Daha fazla bilgi için <a href="privacy.html">Gizlilik Politikası</a>'nı inceleyebilir veya <a href="mailto:fiaxusstudio@gmail.com">fiaxusstudio@gmail.com</a> adresi üzerinden bizimle iletişime geçebilirsiniz.</p>
+</div>
+<footer>© 2026 Fiaxus Studio</footer>
+</main>
+</body>
+</html>
