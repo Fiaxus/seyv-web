@@ -320,6 +320,19 @@ body { position: relative; }
 .extra svg { color: var(--accent); flex: none; }
 .extra b { display: block; font-size: 15px; }
 .extra small { font-size: 13px; color: var(--muted); }
+@media (min-width: 900px) {
+  .extras { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* takvim kartı: küçük ay ızgarası */
+.cal-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 10px; font-size: 14px; }
+.cal-head b { font-weight: 600; }
+.cal-head small { font-size: 11px; color: var(--muted-2); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px 2px; text-align: center; font-size: 12px; }
+.cal-grid span { position: relative; line-height: 30px; border-radius: 10px; }
+.cal-grid .dow { line-height: 20px; font-size: 10.5px; font-weight: 600; color: var(--muted-2); }
+.cal-grid i { position: absolute; left: 50%; bottom: 2px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; }
+.cal-grid .on { background: var(--soft-accent); box-shadow: inset 0 0 0 1.5px var(--accent); color: var(--accent); font-weight: 700; }
 
 /* ---------- ekran görüntüleri ---------- */
 .screens { padding: 72px 0 40px; }
